@@ -1,0 +1,35 @@
+aaa997
+208764944
+
+1.  WhateverPlayer: This player randomly selects positions on the board until it finds an empty
+        spot to place its mark.
+
+    CleverPlayer: This player attempts to fill the board row by row.
+
+    GeniusPlayer: The GeniusPlayer first tries to place its mark in the one of the 0,1 columns(mostly 1).
+        If unsuccessful, it iteratively tries each column on the board.
+        trying marks cell number 1 is a trying to fill empty boxes to blocks the clever player moves.
+
+2.  Advantages of Implementing a Common Interface based:
+
+    1. Designing player classes to implement a common interface allows for polymorphism.
+    this way, instances of different player classes can be treated uniformly through the common interface.
+    This simplifies code and enhances flexibility.
+    2. The interface encapsulates the common behavior that all player classes must provide.
+    It defines a contract for how players should interact with the game board,
+    promoting a clear separation of concerns.
+    3. With a common interface, the code that interacts with players
+    doesn't need to know the specific type of player it's dealing with.
+    This makes it easier to reuse and extend the codebase without modifying existing components.
+    4. The common interface abstracts away the details of individual player implementations.
+    It allows the system to work with players at a higher level of abstraction,
+    focusing on what players can do rather than how they do it.
+
+    The design is based on the following Object-Oriented Programming (OOP) principles:
+
+    Polymorphism: Achieved through the common Player interface,
+        allowing different player classes to be used interchangeably.
+    Encapsulation: The Player interface encapsulates the behavior expected from all player classes,
+        hiding their internal details.
+    Abstraction: The common interface abstracts the concept of a player, providing a clear,
+        high-level view of their role in the game.
