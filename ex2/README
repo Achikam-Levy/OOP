@@ -1,0 +1,73 @@
+aaa997
+208764944
+
+1. Avoidance of Bricks in the Game( Sorry if my english isn't perfect(: ):
+    Design Choice:
+        The design choice to enable the avoidance of bricks in the game by using the first option given in the
+        instructions. means sending the gameObjectCollections to the basic collision strategy and there remove
+        the object himself. And i used this method consistently in other part that object need to be removed.
+
+    Advantages:
+       Consistency: The design maintains consistency by using the same removal method throughout the codebase.
+       Centralized Control: Removal logic is centralized in the basic collision strategy,
+            simplifying maintenance. not need to add public methods.
+       Clear Responsibilities: Objects' removal is handled by the collision strategy,
+            aligning with distinct class responsibilities.
+       Reusability: The removal logic encapsulated in the strategy is reusable in various parts of the code,
+            for example in the removal hearts strategy.
+
+   Disadvantages:
+       Coupling: There's a level of coupling between the basic collision strategy and the broader game object
+            collection.
+       Limited Flexibility: The design might become limiting if different scenarios require unique removal
+            strategies.
+       Testing Challenges: Testing the removal logic may require complex setups involving the entire game
+            object collection.
+       Potential Overhead: Passing the entire gameObjectCollections could be seen as an overhead in scenarios
+            with simple removal logic.
+
+2. Display of Player's Life Number:
+    Implementation:
+        both classes using a common life counter and each class has its on method to update upon life changes.
+        both represented by game objects.
+        Graphical Representation: Implemented using the GraphicLifeCounter class.
+            Hearts that are a game objects added or removed based on the player's life count.
+        Numerical Representation: Implemented using the NumericLifeCounter class. the class has a
+            text renderer to display the numerical life count on the screen.
+    Class Functions:
+        GraphicLifeCounter: Manages the graphical representation of player lives using heart objects,
+            responsible to add and remove the heart images to the screen according to the current life count.
+        NumericLifeCounter: Manages the numerical representation of player lives using a text renderer.
+            responsible change the number and color on the screen according to the current life count.
+
+3. Implementation of Special Behaviors (Strategies):
+    Strategies:
+        Mock Ball Strategy: Creates multiple balls, each with its trajectory. balls added to the screen upon
+            collision.
+        Camera Change Strategy: Initiates a camera change upon collision. uses a costume-build class
+            CameraManager to manage collision count and camera activation.
+        Another Paddle Strategy: Creates an extra paddle. the paddle added to the screen upon collision.
+        More Life Strategy: Generates a heart object that falls, the heart added to the screen upon collision.
+            granting an extra life upon collision with tha main paddle.
+    Classes:
+        all classes are extends the double strategy decorator that includes the basic strategy on collusion.
+        MockBallStrategy: Implements the mock ball behavior by creating multiple ball objects.
+        ChangeCameraStrategy: Initiates a camera change upon collision with a specific object.
+            -CameraManager: is a costume-build class that managed the collision count and camera activation.
+        AnotherPaddleStrategy: Adds an extra paddle upon collision, and uses the managed the paddle counter.
+        MoreLifeStrategy: Generates a heart object that falls, providing an extra life upon collision.
+
+4. Implementation of Double Behavior:
+    Design & Implementation:
+        The Brick class can have multiple collision strategies (double behavior) getting from the factory.
+        Limited to three strategies using the MAX_STRATEGIES_FOR_BRICK constant. while a double behavior was
+        chosen continue to randomize more strategies, until the two spacial strategy are not double.
+        the number of possible spacial strategies is the number of randomized double strategy plus one,
+        limited th randomization by MAX_STRATEGIES_FOR_BRICK.
+        (e.g: double = 1 -> total = 2, double = 3 -> total = 4, simple calculation)
+        So i randomized spacial strategies until double one is not chosen anymore, then based on this number
+        choose only spacial ones(without double). for each spacial i got, it wrapped by the old one used
+        the decorator.
+
+5. i didn't made any changes in the first part API(means that not new public methods in the first part API
+    mentioned in the exercise instructions, only new classes)
